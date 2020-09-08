@@ -49,7 +49,7 @@ export const setUser = newUser => {
 export const tokenRequest = (code, verifier, callback) => {
   return axios({
     method: 'post',
-    url: "https://www.cameraforensics.com/api/v1/oauth/token",
+    url: "https://api.cameraforensics.com/v1/oauth/token",
     withCredentials: true,
     data: queryString.stringify({
       code,
@@ -92,7 +92,7 @@ export const authenticate = (code, callback) => {
 
   return axios({
     method: "get",
-    url: "https://www.cameraforensics.com/api/v1/oauth/authorize?" + params,
+    url: "https://api.cameraforensics.com/v1/oauth/authorize?" + params,
     withCredentials: true,
     headers: {
       "No-Redirect": "true"
