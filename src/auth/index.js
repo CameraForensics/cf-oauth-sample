@@ -9,9 +9,10 @@ global.Buffer = global.Buffer || require("buffer").Buffer;
 var data = JSON.parse(localStorage.getItem("data") || "null");
 var user = JSON.parse(localStorage.getItem("user") || "null");
 
-const CLIENT_ID = "YOUR CLIENT ID HERE";
-const CLIENT_SECRET = "YOUR CLIENT SECRET HERE";
-const REDIRECT_URI = "YOUR REDIRECT URI HERE";
+const CLIENT_ID = "ahVnfmNhbWVyYWZvcmVuc2ljcy1sZG5yGAsSC0FwcGxpY2F0aW9uGICAoOOfto0JDA";
+const CLIENT_SECRET = "d5c70f7af7934daf9c02edd263476d2f";
+const REDIRECT_URI = "http://localhost:3000/";
+const CF_SERVER = "https://api.cameraforensics.com";
 
 const generateChallengeAndVerifier = () => {
   let { challenge, verifier, state } = data || {};
@@ -49,7 +50,11 @@ export const setUser = newUser => {
 export const tokenRequest = (code, verifier, callback) => {
   return axios({
     method: 'post',
+<<<<<<< HEAD
     url: "https://api.cameraforensics.com/v1/oauth/token",
+=======
+    url: `${CF_SERVER}/v1/oauth/token`,
+>>>>>>> Move API calls to api.cameraforensics.com
     withCredentials: true,
     data: queryString.stringify({
       code,
@@ -92,7 +97,11 @@ export const authenticate = (code, callback) => {
 
   return axios({
     method: "get",
+<<<<<<< HEAD
     url: "https://api.cameraforensics.com/v1/oauth/authorize?" + params,
+=======
+    url: `${CF_SERVER}/v1/oauth/authorize?${params}` + params,
+>>>>>>> Move API calls to api.cameraforensics.com
     withCredentials: true,
     headers: {
       "No-Redirect": "true"
